@@ -33,4 +33,3 @@ hs_err_pid*
 
 .gitignore
 out/
-src/test/
