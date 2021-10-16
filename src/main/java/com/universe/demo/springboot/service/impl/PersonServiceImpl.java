@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 事务失效的原因是切面处没有事务
+ */
 @Service
 public class PersonServiceImpl implements PersonService {
     @Autowired
@@ -39,5 +42,19 @@ public class PersonServiceImpl implements PersonService {
         cursor.forEach(person -> {
             System.out.println(person.getName());
         });
+    }
+    @Transactional
+    @Override
+    public void add(Person person) {
+        personMapper.insert(person);
+    }
+    @Override
+    public void add2(Person person){
+        add(person);
+    }
+    @Transactional
+    public void add3(Person person){
+        personMapper.insert(person);
+        int a = 1/0;
     }
 }
