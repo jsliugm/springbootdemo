@@ -33,3 +33,7 @@ hs_err_pid*
 
 .gitignore
 out/
+.gradle/
+gradle/
+gradlew
+gradlew.bat
