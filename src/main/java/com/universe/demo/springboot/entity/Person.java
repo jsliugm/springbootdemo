@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Builder
 @NoArgsConstructor
@@ -17,6 +18,7 @@ import javax.persistence.Table;
 public class Person {
     @Id
     private Long id;
+    @NotNull
     @Column
     private String name;
     @Column

@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * 事务失效的原因是切面处没有事务
  */
-@Service
+
 public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonMapper personMapper;
@@ -43,7 +43,7 @@ public class PersonServiceImpl implements PersonService {
             System.out.println(person.getName());
         });
     }
-    @Transactional
+   // @Transactional
     @Override
     public void add(Person person) {
         personMapper.insert(person);
@@ -56,5 +56,13 @@ public class PersonServiceImpl implements PersonService {
     public void add3(Person person){
         personMapper.insert(person);
         int a = 1/0;
+    }
+    @Transactional
+    @Override
+    public void add(){
+        personMapper.insert(Person.builder().name("zhangsan1").address("address1").build());
+        personMapper.insert(Person.builder().name("zhangsan2").address("address2").build());
+        int a = 1/0;
+        personMapper.insert(Person.builder().name("zhangsan2").address("address2").build());
     }
 }
