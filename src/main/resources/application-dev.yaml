@@ -1,2 +1,14 @@
 server:
   port: 31001
+  context-path: /sbd
+spring:
+  task:
+    execution:
+      pool:
+        core-size: 5
+        max-size: 10
+        queue-capacity: 5
+        keep-alive: 60
+      thread-name-prefix: god-jiang-task-
+config:
+  myflag: true

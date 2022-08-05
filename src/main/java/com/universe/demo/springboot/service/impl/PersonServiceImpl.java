@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.util.Collections;
 import java.util.List;
@@ -43,18 +44,26 @@ public class PersonServiceImpl implements PersonService {
             System.out.println(person.getName());
         });
     }
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void add(Person person) {
         personMapper.insert(person);
+        System.out.println("=======");
     }
     @Override
     public void add2(Person person){
         add(person);
     }
-    @Transactional
+    @Override
+    @Transactional(propagation = Propagation.NESTED)
     public void add3(Person person){
+
         personMapper.insert(person);
-        int a = 1/0;
+        throw new RuntimeException("");
+    }
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void add4(Person person){
+        personMapper.insert(person);
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by jsliu on 2019/1/13.
  */
@@ -14,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class HelloController {
     @RequestMapping("/hello")
-    public Object hello() {
+    public Object hello(HttpServletRequest request) {
+        System.out.println("======================================");
+        System.out.println(request.getServerName());
+        System.out.println(request.getServerPort());
+        System.out.println("======================================");
         return "hello world";
     }
 

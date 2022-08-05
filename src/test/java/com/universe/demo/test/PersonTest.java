@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -21,10 +22,10 @@ public class PersonTest {
     @Resource
     private PersonMapper personMapper;
 
-    //@Transactional
+    ///@Transactional
     @Test
     public void add() {
-        personService.add(Person.builder().name("zhangsan").address("shanghai").build());
+        personService.add(Person.builder().name("lisi0620").address("shanghai").build());
         // personService.add(new Person(111,"zhangsan123"));
     }
 
@@ -32,5 +33,18 @@ public class PersonTest {
     public void get() {
         List<Person> list = personMapper.select(Person.builder().name("zhangsan").address(null).build());
         System.out.println(list);
+    }
+
+    //嵌套事务
+    @Transactional
+    @Test
+    public void test3() {
+        personService.add(Person.builder().name("test33").address("shanghai").build());
+//        try {
+//            personService.add3(Person.builder().name("test31").address("shanghai").build());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        //throw new RuntimeException("");
     }
 }
