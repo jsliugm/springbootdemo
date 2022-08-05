@@ -35,7 +35,7 @@ public class PersonTest {
         System.out.println(list);
     }
 
-    //åµŒå¥—äº‹åŠ¡
+    //Ç¶Ì×ÊÂÎñ
     @Transactional
     @Test
     public void test3() {

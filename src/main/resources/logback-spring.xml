@@ -17,7 +17,7 @@
         </appender>
 <!--        <logger name="com.light.springboot" level="debug" />-->
 <!--        <logger name="com.light.springboot" level="debug" />-->
-        <root level="info">
+        <root level="INFO">
             <appender-ref ref="CONSOLE" />
         </root>
     </springProfile>
