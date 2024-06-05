@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
+ *
  * Created by jsliu on 2019/1/13.
  */
 @EnableAsync
